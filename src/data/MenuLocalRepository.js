@@ -12,6 +12,11 @@ class MenuLocalRepository {
     return menus;
   }
 
+  async getMenu(name) {
+    let menu = await this.localStorage.getMenu(name);
+    return menu;
+  }
+
   async clearAllMenus() {
     await this.localStorage.clearAllMenus();
   }

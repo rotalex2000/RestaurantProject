@@ -4,7 +4,7 @@ import {View, TouchableOpacity, Text} from 'react-native';
 const HomeScreen = ({route, navigation}) => {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <TouchableOpacity onPress={() => navigation.navigate('Menu')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Menus')}>
         <Text>Menu</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Cart')}>

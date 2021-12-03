@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, Modal, TextInput, StyleSheet} from 'react-native';
-import CustomButton from '../components/CustomButton';
-import FAB from '../components/FAB';
-import DefaultPreferenceStorage from '../data/DefaultPreference';
-import MenuLocalRepository from '../data/MenuLocalRepository';
-import {Colors} from '../resources/Colors';
+import CustomButton from '../../components/CustomButton';
+import FAB from '../../components/FAB';
+import DefaultPreferenceStorage from '../../data/DefaultPreference';
+import MenuLocalRepository from '../../data/MenuLocalRepository';
+import Menu from '../../models/menus/Menu';
+import {Colors} from '../../resources/Colors';
 
 const MenuScreen = ({route, navigation}) => {
   const [menus, setMenus] = useState([]);
@@ -23,7 +24,10 @@ const MenuScreen = ({route, navigation}) => {
   const MenuItem = ({name}) => {
     return (
       <View>
-        <Text>{name}</Text>
+        <Text
+          onPress={() => navigation.navigate('MenuDetails', {menuName: name})}>
+          {name}
+        </Text>
       </View>
     );
   };
@@ -89,7 +93,7 @@ const MenuScreen = ({route, navigation}) => {
           />
           <CustomButton
             onPress={() => {
-              addMenu({name: newMenuName});
+              addMenu(new Menu(newMenuName, []));
               setNewMenuName('');
               setIsModalVisible(false);
             }}

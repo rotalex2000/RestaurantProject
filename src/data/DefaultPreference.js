@@ -33,6 +33,14 @@ class DefaultPreferenceStorage {
     return menus;
   };
 
+  getMenu = async name => {
+    let menus = await this.getAllMenus();
+    let menu = menus.find(m => {
+      return m.name === name;
+    });
+    return menu;
+  };
+
   clearAllMenus = async () => {
     await DefaultPreference.clear(MENUS).then(() => {
       console.log('Cleared all menus');
